@@ -21,6 +21,8 @@ metadata {
 		capability "Sensor"
 		capability "Battery"
 
+		command "configureAfterSecure"
+
 		fingerprint deviceId: "0x0701", inClusters: "0x5E,0x86,0x72,0x59,0x85,0x73,0x71,0x84,0x80,0x30,0x31,0x70,0x98,0x7A", outClusters:"0x5A"
 	}
 
@@ -89,12 +91,6 @@ metadata {
 		}
         standardTile("configureAfterSecure", "device.configure", inactiveLabel: false, decoration: "flat", width: 2, height: 2) {
 			state "configure", label:'', action:"configureAfterSecure", icon:"st.secondary.configure"
-		}
-
-		//This tile is a temporary fix so users can select main tiles again
-		standardTile("CONVERTED-MULTI-device.motion", "device.motion", width: 4, height: 4) {
-			state "active", label:'motion', icon:"st.motion.motion.active", backgroundColor:"#53a7c0"
-			state "inactive", label:'no motion', icon:"st.motion.motion.inactive", backgroundColor:"#ffffff"
 		}
 
 		main(["motion", "temperature", "humidity", "illuminance"])
